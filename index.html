@@ -1,7 +1,108 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Evan Kuvshinoff Projects</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+      background: #f9f9f9;
+      color: #333;
+    }
+    h1, h2 {
+      color: #1a1a1a;
+    }
+    .project {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+
+      background: white;
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+     
+
+    .project h2 {
+      margin-top: 0;
+    }
+    .project a {
+      color: #007acc;
+      text-decoration: none;
+    }
+    .project a:hover {
+      text-decoration: underline;
+    }
+    ul {
+      padding-left: 1.2rem;
+    }
+    li {
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
 <body>
-<h1>hi mom</h1>
-<p>i have a website now</p>
+
+  <h1>Evan Kuvshinoff's Projects</h1>
+
+
+  <div class="project">
+    <div class="project-content">
+            <h2>
+            <a href="/clarity/">Clarity: AI Assistant Platform with Voice and Vision</a>
+            </h2>
+            <ul>
+            <li>Designed a fully functional robot assistant with real-time speech interaction and intelligent behavior.</li>
+            <li>Integrated edge-based facial recognition for responsive interaction, using dynamic servo control and camera tracking to maintain realistic eye contact. </li>
+            <li>Developed a conversational system using speech-to-text and the OpenAI API to enable natural language understanding and contextual responses.</li>
+            <li>Engineered Bluetooth telemetry modules for real-time data reporting via prompts.</li>
+            </ul>
+        </div>
+        <img src="careless.png" alt="careless">
+    </div>
+      <div class="project">
+    <div class="project-content">
+            <h2>
+            <a href="/clarity/">clarity_pot</a>
+            </h2>
+            <ul>
+            <li>smart plant pot</li>
+            <li>measures soil moisture content and displays to an oled display </li>
+            <li>sends measurements over bluetooth on request </li>
+
+            </ul>
+        </div>
+    </div>
+          <div class="project">
+    <div class="project-content">
+            <h2>
+            <a href="/clarity/">clarity_telemetry</a>
+            </h2>
+            <ul>
+            <li>wireless temp/humidity measurement station</li>
+            <li>measures temp/humidity and sends to clarity over bluetooth on request </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="project">
+        <div class="project-content">
+
+            <h2>
+            <a href="/friendsignals/" >Friend Signals IoT Communication System</a>
+            </h2>
+            <ul>
+            <li>Designed and built custom IoT devices using Raspberry Pi Pico W to receive real-time alerts.</li>
+            <li>Developed a lightweight, socket-based network protocol that enables reliable communication between devices via a cloud-hosted Azure server.</li>
+            <li>Integrated a bot using the Discord API to trigger device responses from remote users via chat commands.</li>
+            </ul>
+        </div>
+   </div>
+
 </body>
 </html>
