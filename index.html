@@ -5,34 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Evan Kuvshinoff's Portfolio</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+    
     body {
       font-family: 'Arial', sans-serif;
       margin: 0;
       background: #e8eaed;
       color: #333;
       min-height: 100vh;
-      font-size: 1.1rem;
+      font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+      line-height: 1.6;
     }
-    h1, h2 {
+    
+    h1 {
+      font-size: clamp(1.8rem, 2.5vw, 2.5rem);
       color: #1a1a1a;
+      margin-bottom: 1rem;
+      margin-top:-1rem;
+    }
+    
+    h2 {
+      font-size: clamp(1.4rem, 2vw, 1.8rem);
+      color: #1a1a1a;
+    }
+    
+    h3 {
+      font-size: clamp(1.1rem, 1.5vw, 1.3rem);
     }
     
     .container {
       display: flex;
       min-height: 100vh;
-      gap: 2rem;
-      padding: 2rem;
-      box-sizing: border-box;
+      gap: clamp(1rem, 2vw, 2rem);
+      padding: clamp(1rem, 2vw, 2rem);
     }
     
     .left-panel {
       flex: 1;
       background: white;
       border-radius: 12px;
-      padding: 2rem;
+      padding: clamp(1.5rem, 2vw, 2rem);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       overflow-y: auto;
-      max-height: calc(100vh - 4rem);
+      max-height: calc(100vh - 2 * clamp(1rem, 2vw, 2rem));
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -45,14 +62,14 @@
     
     .intro-section {
       display: flex;
-      gap: 2rem;
+      gap: clamp(1rem, 2vw, 2rem);
       align-items: flex-start;
-      margin-bottom: 2rem;
+      margin-bottom: clamp(1.5rem, 2vw, 2rem);
     }
     
     .profile-photo {
-      width: 200px;
-      height: 250px;
+      width: clamp(120px, 15vw, 200px);
+      height: clamp(150px, 18vw, 250px);
       object-fit: cover;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -61,23 +78,22 @@
     
     .mission-statement {
       flex: 1;
-      line-height: 1.6;
     }
     
     .mission-statement h2 {
       margin-top: 0;
-      margin-bottom: 1rem;
+      margin-bottom: clamp(0.5rem, 1vw, 1rem);
     }
     
     .mission-statement p {
-      margin-bottom: 1rem;
-      font-size: 1.05em;
+      margin-bottom: clamp(0.5rem, 1vw, 1rem);
+      font-size: clamp(0.95rem, 1.2vw, 1.05rem);
     }
     
     .education-section {
       display: flex;
-      gap: 1rem;
-      margin-bottom: 2rem;
+      gap: clamp(0.5rem, 1vw, 1rem);
+      margin-bottom: clamp(1.5rem, 2vw, 2rem);
       justify-content: flex-start;
       align-items: flex-start;
       flex-wrap: wrap;
@@ -86,71 +102,48 @@
     .education-callout {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: clamp(0.5rem, 1vw, 1rem);
       background: #fefefe;
       border: 2px solid #e21833;
       border-radius: 8px;
-      padding: 1rem;
+      padding: clamp(0.75rem, 1vw, 1rem);
       width: fit-content;
+      max-width: 100%;
     }
     
     .google-cert-callout {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: clamp(0.5rem, 1vw, 1rem);
       background: #fefefe;
       border: 2px solid #4285f4;
       border-radius: 8px;
-      padding: 1rem;
+      padding: clamp(0.75rem, 1vw, 1rem);
       width: fit-content;
-      margin-left: auto;
-      margin-right: auto;
+      max-width: 100%;
     }
     
-    .umd-logo {
-      width: 60px;
-      height: 60px;
+    .umd-logo, .google-logo {
+      width: clamp(40px, 5vw, 60px);
+      height: clamp(40px, 5vw, 60px);
       object-fit: contain;
       flex-shrink: 0;
     }
     
-    .google-logo {
-      width: 60px;
-      height: 60px;
-      object-fit: contain;
-      flex-shrink: 0;
-    }
-    
-    .degree-info {
+    .degree-info, .cert-info {
       flex: 1;
     }
     
-    .cert-info {
-      flex: 1;
-    }
-    
-    .degree-info h3 {
+    .degree-info h3, .cert-info h3 {
       margin: 0;
       color: #1a1a1a;
-      font-size: 1.1em;
+      font-size: clamp(0.9rem, 1.2vw, 1.1rem);
       font-weight: bold;
     }
     
-    .cert-info h3 {
-      margin: 0;
-      color: #1a1a1a;
-      font-size: 1.1em;
-      font-weight: bold;
-    }
-    
-    .degree-info p {
+    .degree-info p, .cert-info p {
       margin: 0.25rem 0;
-      font-size: 0.95em;
-    }
-    
-    .cert-info p {
-      margin: 0.25rem 0;
-      font-size: 0.95em;
+      font-size: clamp(0.8rem, 1vw, 0.95rem);
     }
     
     .specialization {
@@ -163,14 +156,9 @@
       font-weight: 500;
     }
     
-    .graduation {
+    .graduation, .cert-completion {
       color: #666;
-      font-size: 0.9em;
-    }
-    
-    .cert-completion {
-      color: #666;
-      font-size: 0.9em;
+      font-size: clamp(0.75rem, 0.9vw, 0.9rem);
     }
     
     .right-panel {
@@ -179,6 +167,7 @@
       display: flex;
       flex-direction: column;
       transition: flex 0.4s ease;
+      max-height: calc(100vh - 2 * clamp(1rem, 2vw, 2rem));
     }
     
     .right-panel.expanded {
@@ -188,20 +177,19 @@
     .projects-container {
       display: flex;
       flex-direction: column;
-      justify-content: space-evenly;
-      flex: 1;
+      gap: clamp(1rem, 1.5vw, 1.5rem);
     }
     
     .skills-section {
-      margin-bottom: 2rem;
+      margin-bottom: clamp(1.5rem, 2vw, 2rem);
       text-align: center;
     }
     
     .skills-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-      gap: 1.5rem;
-      margin-top: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: clamp(1rem, 1.5vw, 1.5rem);
+      margin-top: clamp(0.75rem, 1vw, 1rem);
     }
     
     .skill-category {
@@ -209,38 +197,40 @@
     }
     
     .skill-category h3 {
-      margin: 0 0 0.5rem 0;
+      margin: 0 0 clamp(0.3rem, 0.5vw, 0.5rem) 0;
       color: #007acc;
-      font-size: 1.3rem;
+      font-size: clamp(1rem, 1.3vw, 1.3rem);
     }
     
     .skill-category ul {
       margin: 0;
-      padding-left: 1rem;
+      padding-left: clamp(0.75rem, 1vw, 1rem);
     }
     
     .skill-category li {
-      margin-bottom: 0.3rem;
-      font-size: 1.3rem;
+      margin-bottom: clamp(0.2rem, 0.3vw, 0.3rem);
+      font-size: clamp(0.85rem, 1.1vw, 1.3rem);
     }
     
     .contact-section {
-      margin-top: 2rem;
+      margin-top: clamp(1.5rem, 2vw, 2rem);
     }
     
     .contact-links {
       display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
+      gap: clamp(0.5rem, 1vw, 1rem);
+      margin-top: clamp(0.75rem, 1vw, 1rem);
+      flex-wrap: wrap;
     }
     
     .contact-links a {
       color: #007acc;
       text-decoration: none;
-      padding: 0.5rem 1rem;
+      padding: clamp(0.4rem, 0.5vw, 0.5rem) clamp(0.8rem, 1vw, 1rem);
       border: 1px solid #007acc;
       border-radius: 4px;
       transition: all 0.2s ease;
+      font-size: clamp(0.85rem, 1vw, 1rem);
     }
     
     .contact-links a:hover {
@@ -251,7 +241,6 @@
     .project {
       background: #f8f9fa;
       border-radius: 8px;
-      margin-bottom: 0;
       border: 1px solid #e1e5e9;
       overflow: hidden;
       transition: all 0.3s ease;
@@ -261,8 +250,8 @@
     .project-header {
       display: flex;
       align-items: flex-start;
-      gap: 1rem;
-      padding: 1.5rem 2rem;
+      gap: clamp(0.5rem, 1vw, 1rem);
+      padding: clamp(1rem, 1.5vw, 1.5rem) clamp(1.5rem, 2vw, 2rem);
       cursor: pointer;
       transition: background-color 0.2s ease;
     }
@@ -272,10 +261,10 @@
     }
     
     .project-header h2 {
-      margin: 0 0 0.5rem 0;
+      margin: 0 0 clamp(0.3rem, 0.5vw, 0.5rem) 0;
       color: #007acc;
       flex: 1;
-      font-size: 1.3em;
+      font-size: clamp(1.1rem, 1.3vw, 1.3rem);
     }
     
     .project-header h2:hover {
@@ -283,7 +272,7 @@
     }
     
     .expand-icon {
-      font-size: 1.2em;
+      font-size: clamp(1rem, 1.2vw, 1.2rem);
       color: #666;
       transition: transform 0.3s ease;
       user-select: none;
@@ -298,20 +287,20 @@
     }
     
     .project-preview ul {
-      margin: 0.8rem 0 0 0;
-      padding-left: 1.2rem;
+      margin: clamp(0.5rem, 0.8vw, 0.8rem) 0 0 0;
+      padding-left: clamp(1rem, 1.2vw, 1.2rem);
     }
     
     .project-preview li {
-      margin-bottom: 0.5rem;
-      font-size: 1em;
+      margin-bottom: clamp(0.3rem, 0.5vw, 0.5rem);
+      font-size: clamp(0.85rem, 1vw, 1rem);
       color: #666;
       line-height: 1.4;
     }
     
     .project-thumbnail {
-      max-height: 140px;
-      max-width: 200px;
+      max-height: clamp(100px, 12vw, 140px);
+      max-width: clamp(150px, 18vw, 200px);
       object-fit: cover;
       border-radius: 6px;
       opacity: 0.8;
@@ -326,51 +315,59 @@
     
     .project.expanded .project-details {
       max-height: 2500px;
-      padding: 1.5rem;
+      padding: clamp(1rem, 1.5vw, 1.5rem);
       border-top: 1px solid #e1e5e9;
     }
     
     .project-details-content {
       display: flex;
-      gap: 2rem;
+      gap: clamp(1rem, 2vw, 2rem);
       align-items: flex-start;
+      flex-wrap: wrap;
     }
     
     .project-details ul {
-      padding-left: 1.2rem;
-      margin: 1rem 0;
+      padding-left: clamp(1rem, 1.2vw, 1.2rem);
+      margin: clamp(0.75rem, 1vw, 1rem) 0;
     }
     
     .project-details li {
-      margin-bottom: 0.8rem;
+      margin-bottom: clamp(0.5rem, 0.8vw, 0.8rem);
       line-height: 1.5;
     }
     
     .project-media {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
-      max-width: 600px;
+      gap: clamp(0.75rem, 1vw, 1rem);
+      max-width: min(600px, 100%);
+      flex: 1 1 300px;
     }
     
-    .project-media img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 6px;
-    }
-    
-    .project-media video {
+    .project-media img, .project-media video {
       max-width: 100%;
       height: auto;
       border-radius: 6px;
     }
     
     .project-text {
-      flex: 1;
-      min-width: 300px;
+      flex: 2 1 400px;
+      min-width: 0;
     }
     
-    @media (max-width: 1200px) {
+    /* Tablet and smaller desktop screens */
+    @media (max-width: 1400px) {
+      .container {
+        gap: 1rem;
+      }
+      
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    /* Portrait tablets and large phones */
+    @media (max-width: 1024px) {
       .container {
         flex-direction: column;
         gap: 1rem;
@@ -386,56 +383,56 @@
         text-align: center;
       }
       
-      .profile-photo {
-        width: 150px;
-        height: 200px;
-      }
-      
       .education-section {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-    
-    @media (max-width: 768px) {
-      .container {
-        padding: 1rem;
+        justify-content: center;
       }
       
-      .left-panel {
-        padding: 1.5rem;
-      }
-      
-      .intro-section {
-        gap: 1rem;
-      }
-      
-      .profile-photo {
-        width: 120px;
-        height: 150px;
-      }
-      
-      .project-header {
-        flex-direction: column;
-        gap: 0.5rem;
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
       
       .project-details-content {
         flex-direction: column;
-        gap: 1rem;
       }
       
       .project-media {
         order: -1;
+        max-width: 100%;
+      }
+    }
+    
+    /* Mobile devices */
+    @media (max-width: 768px) {
+      .project-header {
+        flex-wrap: wrap;
+      }
+      
+      .project-thumbnail {
+        order: -1;
+        width: 100%;
+        max-width: 100%;
+        max-height: 200px;
+        object-fit: cover;
+      }
+      
+      .expand-icon {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+      }
+      
+      .project-header {
+        position: relative;
+      }
+      
+      .education-callout, .google-cert-callout {
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
       }
       
       .skills-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-      }
-      
-      .education-section {
-        gap: 0.5rem;
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -693,6 +690,21 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
-</body>
-</html>
+  <script>
+    function toggleProject(projectElement) {
+      projectElement.classList.toggle('expanded');
+      
+      // Update panel expansion states
+      const leftPanel = document.querySelector('.left-panel');
+      const rightPanel = document.querySelector('.right-panel');
+      const anyExpanded = document.querySelector('.project.expanded');
+      
+      if (anyExpanded) {
+        leftPanel.classList.add('collapsed');
+        rightPanel.classList.add('expanded');
+      } else {
+        leftPanel.classList.remove('collapsed');
+        rightPanel.classList.remove('expanded');
+      }
+    }
+  </script>
