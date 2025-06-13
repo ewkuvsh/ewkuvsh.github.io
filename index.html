@@ -59,6 +59,7 @@
       display: flex;
       flex-direction: column;
       transition: width 0.4s ease;
+      gap: calc(0rem + 0.2vw);
     }
     
     .left-panel.collapsed {
@@ -185,8 +186,6 @@
       transition: flex 0.4s ease;
       height: fit-content;
       max-height: calc(100vh - 1.2rem);
-      scrollbar-width: none; /* Firefox */
-      -ms-overflow-style: none; /* Internet Explorer 10+ */
     }
     
     .right-panel::-webkit-scrollbar {
@@ -204,12 +203,11 @@
     }
     
     .skills-section {
-      margin-bottom: calc(1.5rem + 0.15vw);
+      margin-bottom: calc(.05rem + 0.105vw);
       text-align: center;
-      flex: 0 1 auto;
+      flex-shrink: 0;
       display: flex;
       flex-direction: column;
-      min-height: 0;
     }
     
     .skills-grid {
@@ -786,7 +784,24 @@
       </div>
     </div>
   </div>
-  <script src="script.js"></script>
+  <script>
+    function toggleProject(element) {
+      element.classList.toggle('expanded');
+      
+      // Adjust left panel width based on any project being expanded
+      const leftPanel = document.querySelector('.left-panel');
+      const rightPanel = document.querySelector('.right-panel');
+      const anyExpanded = document.querySelector('.project.expanded');
+      
+      if (anyExpanded) {
+        leftPanel.classList.add('collapsed');
+        rightPanel.classList.add('expanded');
+      } else {
+        leftPanel.classList.remove('collapsed');
+        rightPanel.classList.remove('expanded');
+      }
+    }
+  </script>
 
   </body>
 </html>
