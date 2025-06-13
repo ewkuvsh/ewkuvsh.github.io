@@ -3,106 +3,696 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Evan Kuvshinoff Projects</title>
+  <title>Evan Kuvshinoff's Portfolio</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 2rem;
-      background: #f9f9f9;
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      background: #e8eaed;
       color: #333;
+      min-height: 100vh;
+      font-size: 1.1rem;
     }
     h1, h2 {
       color: #1a1a1a;
     }
+    
+    .container {
+      display: flex;
+      min-height: 100vh;
+      gap: 2rem;
+      padding: 2rem;
+      box-sizing: border-box;
+    }
+    
+    .left-panel {
+      flex: 1;
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      overflow-y: auto;
+      max-height: calc(100vh - 4rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: flex 0.4s ease;
+    }
+    
+    .left-panel.collapsed {
+      flex: 0.9;
+    }
+    
+    .intro-section {
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+      margin-bottom: 2rem;
+    }
+    
+    .profile-photo {
+      width: 200px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      flex-shrink: 0;
+    }
+    
+    .mission-statement {
+      flex: 1;
+      line-height: 1.6;
+    }
+    
+    .mission-statement h2 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+    
+    .mission-statement p {
+      margin-bottom: 1rem;
+      font-size: 1.05em;
+    }
+    
+    .education-section {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+    
+    .education-callout {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: #fefefe;
+      border: 2px solid #e21833;
+      border-radius: 8px;
+      padding: 1rem;
+      width: fit-content;
+    }
+    
+    .google-cert-callout {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: #fefefe;
+      border: 2px solid #4285f4;
+      border-radius: 8px;
+      padding: 1rem;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .umd-logo {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    
+    .google-logo {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    
+    .degree-info {
+      flex: 1;
+    }
+    
+    .cert-info {
+      flex: 1;
+    }
+    
+    .degree-info h3 {
+      margin: 0;
+      color: #1a1a1a;
+      font-size: 1.1em;
+      font-weight: bold;
+    }
+    
+    .cert-info h3 {
+      margin: 0;
+      color: #1a1a1a;
+      font-size: 1.1em;
+      font-weight: bold;
+    }
+    
+    .degree-info p {
+      margin: 0.25rem 0;
+      font-size: 0.95em;
+    }
+    
+    .cert-info p {
+      margin: 0.25rem 0;
+      font-size: 0.95em;
+    }
+    
+    .specialization {
+      color: #e21833;
+      font-weight: 500;
+    }
+    
+    .cert-specialization {
+      color: #4285f4;
+      font-weight: 500;
+    }
+    
+    .graduation {
+      color: #666;
+      font-size: 0.9em;
+    }
+    
+    .cert-completion {
+      color: #666;
+      font-size: 0.9em;
+    }
+    
+    .right-panel {
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      transition: flex 0.4s ease;
+    }
+    
+    .right-panel.expanded {
+      flex: 1.1;
+    }
+    
+    .projects-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      flex: 1;
+    }
+    
+    .skills-section {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    
+    .skill-category {
+      text-align: left;
+    }
+    
+    .skill-category h3 {
+      margin: 0 0 0.5rem 0;
+      color: #007acc;
+      font-size: 1.3rem;
+    }
+    
+    .skill-category ul {
+      margin: 0;
+      padding-left: 1rem;
+    }
+    
+    .skill-category li {
+      margin-bottom: 0.3rem;
+      font-size: 1.3rem;
+    }
+    
+    .contact-section {
+      margin-top: 2rem;
+    }
+    
+    .contact-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .contact-links a {
+      color: #007acc;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border: 1px solid #007acc;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+    }
+    
+    .contact-links a:hover {
+      background-color: #007acc;
+      color: white;
+    }
+    
     .project {
+      background: #f8f9fa;
+      border-radius: 8px;
+      margin-bottom: 0;
+      border: 1px solid #e1e5e9;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .project-header {
       display: flex;
       align-items: flex-start;
       gap: 1rem;
-
-      background: white;
-      border-radius: 8px;
-      padding: 1rem 1.5rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      padding: 1.5rem 2rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
     }
-     
-
-    .project h2 {
-      margin-top: 0;
+    
+    .project-header:hover {
+      background-color: #e9ecef;
     }
-    .project a {
+    
+    .project-header h2 {
+      margin: 0 0 0.5rem 0;
       color: #007acc;
-      text-decoration: none;
+      flex: 1;
+      font-size: 1.3em;
     }
-    .project a:hover {
+    
+    .project-header h2:hover {
       text-decoration: underline;
     }
-    ul {
+    
+    .expand-icon {
+      font-size: 1.2em;
+      color: #666;
+      transition: transform 0.3s ease;
+      user-select: none;
+    }
+    
+    .project.expanded .expand-icon {
+      transform: rotate(180deg);
+    }
+    
+    .project-preview {
+      flex: 1;
+    }
+    
+    .project-preview ul {
+      margin: 0.8rem 0 0 0;
       padding-left: 1.2rem;
     }
-    li {
+    
+    .project-preview li {
       margin-bottom: 0.5rem;
+      font-size: 1em;
+      color: #666;
+      line-height: 1.4;
+    }
+    
+    .project-thumbnail {
+      max-height: 140px;
+      max-width: 200px;
+      object-fit: cover;
+      border-radius: 6px;
+      opacity: 0.8;
+    }
+    
+    .project-details {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      background: white;
+    }
+    
+    .project.expanded .project-details {
+      max-height: 800px;
+      padding: 1.5rem;
+      border-top: 1px solid #e1e5e9;
+    }
+    
+    .project-details-content {
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+    
+    .project-details ul {
+      padding-left: 1.2rem;
+      margin: 1rem 0;
+    }
+    
+    .project-details li {
+      margin-bottom: 0.8rem;
+      line-height: 1.5;
+    }
+    
+    .project-media {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 600px;
+    }
+    
+    .project-media img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+    
+    .project-media video {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+    
+    .project-text {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    @media (max-width: 1200px) {
+      .container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .left-panel, .right-panel {
+        max-height: none;
+      }
+      
+      .intro-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      
+      .profile-photo {
+        width: 150px;
+        height: 200px;
+      }
+      
+      .education-section {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+      
+      .left-panel {
+        padding: 1.5rem;
+      }
+      
+      .intro-section {
+        gap: 1rem;
+      }
+      
+      .profile-photo {
+        width: 120px;
+        height: 150px;
+      }
+      
+      .project-header {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      
+      .project-details-content {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .project-media {
+        order: -1;
+      }
+      
+      .skills-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+      
+      .education-section {
+        gap: 0.5rem;
+      }
     }
   </style>
 </head>
 <body>
-
-  <h1>Evan Kuvshinoff's Projects</h1>
-
-
-  <div class="project">
-    <div class="project-content">
-            <h2>
-            <a href="/clarity/">Clarity: AI Assistant Platform with Voice and Vision</a>
-            </h2>
-            <ul>
-            <li>Designed a fully functional robot assistant with real-time speech interaction and intelligent behavior.</li>
-            <li>Integrated edge-based facial recognition for responsive interaction, using dynamic servo control and camera tracking to maintain realistic eye contact. </li>
-            <li>Developed a conversational system using speech-to-text and the OpenAI API to enable natural language understanding and contextual responses.</li>
-            <li>Engineered Bluetooth telemetry modules for real-time data reporting via prompts.</li>
-            </ul>
+  <div class="container">
+    <div class="left-panel">
+      <h1>Evan Kuvshinoff</h1>
+      
+      <div class="intro-section">
+        <img src="me.jpeg" alt="Evan Kuvshinoff" class="profile-photo">
+        <div class="mission-statement">
+          <h2>Mission Statement</h2>
+          <p>I'm passionate about creating intelligent systems with real impact on the world. My work focuses on developing intuitive, responsive solutions that enhance daily life through thoughtful and responsible integration of AI, IoT, and interactive design.</p>
+          
+          <p>I'm eager to apply problem-solving skills, hands-on experience with microcontrollers, and a collaborative mindset to meaningful projects that make the world a better place.</p>
         </div>
-        <img src="careless.png" alt="careless">
+      </div>
+      
+      <div class="education-section">
+        <div class="education-callout">
+          <img src="umd.png" alt="University of Maryland Logo" class="umd-logo">
+          <div class="degree-info">
+            <h3>University of Maryland, College Park</h3>
+            <p><span class="specialization">B.S. in Computer Engineering with Cybersecurity Specialization</span></p>
+            <p class="graduation">May 2025</p>
+          </div>
+        </div>
+        
+        <div class="google-cert-callout">
+          <svg class="google-logo" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+          </svg>
+          <div class="cert-info">
+            <h3>Google Career Certificate</h3>
+            <p><span class="cert-specialization">Cybersecurity Professional</span></p>
+            <p class="cert-completion">2024</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="skills-section">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h3>Programming Languages</h3>
+            <ul>
+              <li>C/C++/C#</li>
+              <li>Python</li>
+              <li>Go</li>
+              <li>Java</li>
+              <li>SQL</li>
+              <li>HTML/CSS</li>
+              <li>Verilog</li>
+              <li>x86 Assembly</li>
+            </ul>
+          </div>
+          
+          <div class="skill-category">
+            <h3>Software & Tools</h3>
+            <ul>
+              <li>Linux/Unix Systems</li>
+              <li>Git/SVN</li>
+              <li>Azure</li>
+              <li>Agile/Scrum/Waterfall</li>
+              <li>Jira</li>
+              <li>STM32CUBE IDE</li>
+              <li>Unity Game Engine</li>
+              <li>MATLAB/Simulink</li>
+            </ul>
+          </div>
+          <div class="skill-category">
+            <h3>Hardware & Embedded</h3>
+            <ul>
+              <li>STM32 Microcontrollers</li>
+              <li>ESP32</li>
+              <li>Arduino UNO</li>
+              <li>Raspberry Pi (5/Zero/Pico)</li>
+              <li>FPGA Development</li>
+              <li>Circuit Design & Analysis</li>
+              <li>PCB Design</li>
+              <li>Digital Signal Processing</li>
+            </ul>
+          </div>
+          <div class="skill-category">
+            <h3>Specialized Areas</h3>
+            <ul>
+              <li>AI/ML Integration</li>
+              <li>Cloud Computing</li>
+              <li>IoT System Design</li>
+              <li>Network Programming</li>
+              <li>Edge Computing</li>
+              <li>Computer Vision</li>
+              <li>Real-time Systems</li>
+              <li>Cybersecurity</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="contact-section">
+        <h2>Get In Touch</h2>
+        <p>Interested in learning more about my work? I'd love to hear from you.</p>
+        <div class="contact-links">
+          <a href="mailto:evan@kuvshinoff.net">Email</a>
+          <a href="https://www.linkedin.com/in/evan-kuvshinoff-2b40602a9/">LinkedIn</a>
+          <a href="https://github.com/ewkuvsh">GitHub</a>
+        </div>
+      </div>
     </div>
-      <div class="project">
-    <div class="project-content">
-            <h2>
-            <a href="/clarity/">clarity_pot</a>
-            </h2>
-            <ul>
-            <li>smart plant pot</li>
-            <li>measures soil moisture content and displays to an oled display </li>
-            <li>sends measurements over bluetooth on request </li>
-
-            </ul>
+    
+    <div class="right-panel">
+      <div class="projects-container">
+        <div class="project" onclick="toggleProject(this)">
+          <div class="project-header">
+            <div class="project-preview">
+              <h2>Clarity: AI Assistant Platform with Voice and Vision</h2>
+              <ul>
+                <li>Fully functional robot assistant with real-time speech interaction</li>
+                <li>Edge-based facial recognition with dynamic servo control</li>
+                <li>Natural language understanding via OpenAI API</li>
+              </ul>
+            </div>
+            <img src="clarity_img.jpeg" alt="Clarity AI Assistant" class="project-thumbnail">
+            <span class="expand-icon">▼</span>
+          </div>
+          <div class="project-details">
+            <div class="project-details-content">
+              <div class="project-text">
+                <h3>Clarity Robot - <a href="https://github.com/ewkuvsh/clarity">GitHub Repo</a></h3>
+                <p>Clarity is a sophisticated autonomous robot system, featuring a quadruped design with an OLED display and advanced AI capabilities. The robot combines computer vision, natural language processing, and real-time communication to create an interactive companion that can track faces, respond to voice commands, and display emotions through its screen interface. The system architecture utilizes a hybrid onboard/distributed processing approach, Connecting to a powerful core server for video and speech processing when available, then seamlessly falling back to onboard processing when connection to the core server is unavailable.  
+</p>
+                <p>The robot's personality is driven by OpenAI API integration, allowing for natural conversation. Clarity processes speech input, can perform web searches for real-time information, and responds with synthesized speech while displaying appropriate facial expressions. The face tracking system uses MTCNN neural networks for real-time detection, enabling the robot to maintain eye contact during conversations. Technical highlights include custom servo control for head movement, I2C-based OLED display management, multi-process architecture for concurrent audio/visual processing, and robust network communication protocols for seamless integration between the robot hardware and the core server.
+</p>
+                <p>Beyond its technical capabilities, Clarity's system prompt adds multiple fun quirks and easter eggs, adding an element of unpredictability to interactions. The project demonstrates proficiency in embedded systems programming, computer vision, natural language processing, robotics control, and distributed system design, showcasing the integration of multiple complex technologies into a cohesive and engaging robotic platform.</p>
+              </div>
+              <div class="project-media">
+                <img src="clarity_img.jpeg" alt="Clarity AI Assistant">
+                <video width="100%" controls>
+                  <source src="clarity_vid_encoded.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+          </div>
         </div>
+        <div class="project" onclick="toggleProject(this)">
+          <div class="project-header">
+            <div class="project-preview">
+              <h2>Friend Signals IoT Communication System</h2> 
+              <ul>
+                <li>Custom IoT devices using Raspberry Pi Pico W</li>
+                <li>Cloud-hosted Azure server communication</li>
+                <li>Discord bot integration for remote control</li>
+              </ul>
+            </div>
+            <img src="friendsignal_img.jpeg" alt="Friend Signals Device" class="project-thumbnail">
+            <span class="expand-icon">▼</span>
+          </div>
+          <div class="project-details">
+            <div class="project-details-content">
+              <div class="project-text">
+              <h2>Friend Signals IoT Communication System</h2> 
+                <h3>IoT Communication Network - <a href="https://github.com/ewkuvsh/friend_signals">GitHub Repo</a></h3> 
+                <p>I developed a distributed IoT alert system that enables remote activation of physical alarm devices through Discord commands. The system consists of three main components: a Python program running on a cloud server that manages connected devices, MicroPython-based client firmware for Raspberry Pi Pico microcontrollers, and a Discord bot interface that allows users to trigger alerts remotely.
+</p>
+                                
+                <p>The networking protocol is completely custom and built using sockets. Each client device registers with a unique identifier during its handshake protocol, and the server continuously monitors device health through periodic keep-alive messages, automatically pruning disconnected devices from the active client list.
+</p>
+                
+                <p>The client firmware runs on embedded devices equipped with LEDs, buzzers, and WiFi connectivity. When triggered, devices execute a coordinated audio/visual alert sequence featuring alternating LED patterns and PWM-controlled buzzer tones, creating an effective alert that your friends are interested in speaking to you, at any hour of the night! The firmware includes robust error handling with watchdog timer integration to ensure reliable operation and automatic recovery from network failures or system crashes.
+</p>
+                
+                <p>This project demonstrates proficiency in network programming, embedded systems development, asynchronous programming patterns, and IoT device management. The architecture emphasizes reliability and scalability, with proper connection management, error handling, and real-time device monitoring capabilities that make it suitable for production deployment in environments requiring reliable remote notification systems. It is my most technically sound (and gloriously annoying) project. </p>
+              </div>
+              <div class="project-media">
+                <img src="friendsignal_img.jpeg" alt="Friend Signals Device">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="project" onclick="toggleProject(this)">
+          <div class="project-header">
+            <div class="project-preview">
+              <h2>Smart Plant Monitor</h2>
+              <ul>
+                <li>Smart plant pot with soil moisture monitoring</li>
+                <li>OLED display for real-time readings</li>
+                <li>Bluetooth connectivity for remote monitoring</li>
+              </ul>
+            </div>
+            <img src="pot_img.jpeg" alt="Smart Plant Pot" class="project-thumbnail">
+            <span class="expand-icon">▼</span>
+          </div>
+          <div class="project-details">
+            <div class="project-details-content">
+              <div class="project-text">
+                <h3>Smart Plant Monitoring System</h3>
+                <p>I developed a Bluetooth-enabled smart plant monitoring system that provides real-time soil moisture readings through both a local OLED display and wireless connectivity. 
+</p>
+                
+                <p>The system is built around an Arduino Nano ESP32, equipped with a capacitive soil moisture sensor and a 128x64 pixel OLED display. The moisture sensor uses analog-to-digital conversion to measure soil conductivity, which is then calibrated and mapped to percentage values between completely dry and fully saturated conditions. The firmware implements custom calibration constants.
+</p>
+                
+                <p>The user interface features an OLED display that presents multiple data visualizations simultaneously. The screen shows raw sensor values, percentage-based moisture levels for easy interpretation, descriptive status text ranging from "Very Dry" to "Very Wet," and a dynamic progress bar that provides immediate visual feedback. In addition to visual output, the device acts as a Bluetooth peripheral, allowing the Clarity robot to interface with it and poll the sensor data on request.
+</p>
+                
+                <p>This project demonstrates expertise in embedded C++ programming, sensor interfacing, display graphics programming, Bluetooth Low Energy protocols, and IoT device development. </p>
+              </div>
+              <div class="project-media">
+                <img src="pot_img.jpeg" alt="Smart Plant Pot">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project" onclick="toggleProject(this)">
+          <div class="project-header">
+            <div class="project-preview">
+              <h2>Clarity Telemetry Station</h2>
+              <ul>
+                <li>Wireless temperature and humidity monitoring</li>
+                <li>Real-time environmental data collection</li>
+                <li>Bluetooth integration with Clarity system</li>
+              </ul>
+            </div>
+            <img src="telemetry_img.jpeg" alt="Telemetry Station" class="project-thumbnail">
+            <span class="expand-icon">▼</span>
+          </div>
+          <div class="project-details">
+            <div class="project-details-content">
+              <div class="project-text">
+                <h3>Environmental Monitoring Station</h3>
+                <p>I developed a multi-sensor telemetry system using the Zephyr Real-Time Operating System that aggregates environmental data from multiple sensors and provides wireless access to the Clarity robot through Bluetooth Low Energy. This embedded system demonstrates advanced RTOS programming, sensor integration, and wireless communication protocols in a production-ready IoT device architecture.
+</p>
+                
+                <p>The system integrates a VL53L0X time-of-flight laser distance sensor for precise ranging measurements, and an HTS221 environmental sensor providing both temperature and humidity readings. The firmware implements robust sensor initialization with device tree integration, ensuring proper hardware abstraction and driver compatibility within the Zephyr ecosystem. Each sensor is polled independently with error handling. 
+</p>
+                
+                <p>Clarity's system prompt includes a tool call to connect to the station and poll the data, allowing the robot to determine the ambient temperature or humidity when asked. This project showcases expertise in RTOS development, embedded systems architecture, sensor interfacing protocols, Bluetooth Low Energy specification implementation, and real-time data processing. </p>
+                
+              </div>
+              <div class="project-media">
+                <img src="telemetry_img.jpeg" alt="Telemetry Station">
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
     </div>
-          <div class="project">
-    <div class="project-content">
-            <h2>
-            <a href="/clarity/">clarity_telemetry</a>
-            </h2>
-            <ul>
-            <li>wireless temp/humidity measurement station</li>
-            <li>measures temp/humidity and sends to clarity over bluetooth on request </li>
+  </div>
 
-            </ul>
-        </div>
-    </div>
-
-    <div class="project">
-        <div class="project-content">
-
-            <h2>
-            <a href="/friendsignals/" >Friend Signals IoT Communication System</a>
-            </h2>
-            <ul>
-            <li>Designed and built custom IoT devices using Raspberry Pi Pico W to receive real-time alerts.</li>
-            <li>Developed a lightweight, socket-based network protocol that enables reliable communication between devices via a cloud-hosted Azure server.</li>
-            <li>Integrated a bot using the Discord API to trigger device responses from remote users via chat commands.</li>
-            </ul>
-        </div>
-   </div>
-
+  <script src="script.js"></script>
 </body>
 </html>
