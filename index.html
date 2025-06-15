@@ -426,25 +426,29 @@
     
     /* Portrait tablets and large phones */
     @media (max-width: 900px) {
+      body {
+        overflow: auto;
+        height: auto;
+      }
+      
       .container {
         flex-direction: column;
-        gap: calc(0.8rem + 0.1vw);
-        height: 100vh;
-        overflow: hidden;
+        gap: 1rem;
+        height: auto;
+        overflow: visible;
+        padding: 1rem;
       }
       
       .left-panel, .right-panel {
         flex: none;
+        width: 100%;
         height: auto;
-        overflow-y: auto;
+        max-height: none;
+        overflow-y: visible;
       }
       
       .left-panel {
-        max-height: 60vh;
-      }
-      
-      .right-panel {
-        max-height: 38vh;
+        margin-bottom: 1rem;
       }
       
       .intro-section {
@@ -454,8 +458,8 @@
       }
       
       .profile-photo {
-        width: calc(120px + 1vw);
-        height: calc(150px + 1.5vw);
+        width: 120px;
+        height: 150px;
       }
       
       .education-section {
@@ -480,7 +484,11 @@
     /* Mobile devices */
     @media (max-width: 600px) {
       .container {
-        padding: calc(1rem + 0.1vw);
+        padding: 0.8rem;
+      }
+      
+      .left-panel {
+        padding: 1.5rem;
       }
       
       .project-header {
@@ -492,22 +500,22 @@
         order: -1;
         width: 100%;
         max-width: 100%;
-        max-height: calc(150px + 1vw);
+        max-height: 150px;
         object-fit: cover;
-        margin-bottom: calc(0.5rem + 0.05vw);
+        margin-bottom: 0.5rem;
       }
       
       .expand-icon {
         position: absolute;
-        right: calc(1rem + 0.1vw);
-        top: calc(1rem + 0.1vw);
+        right: 1rem;
+        top: 1rem;
       }
       
       .education-callout, .google-cert-callout {
         flex-direction: column;
         text-align: center;
         width: 100%;
-        padding: calc(1rem + 0.1vw);
+        padding: 1rem;
       }
       
       .skills-grid {
@@ -517,17 +525,34 @@
       .contact-links {
         justify-content: center;
       }
+      
+      .profile-photo {
+        width: 100px;
+        height: 125px;
+      }
     }
     
     /* Very small screens */
     @media (max-width: 400px) {
       .profile-photo {
-        width: calc(100px + 1vw);
-        height: calc(125px + 1.5vw);
+        width: 90px;
+        height: 115px;
       }
       
       .project-thumbnail {
-        max-height: calc(120px + 1vw);
+        max-height: 120px;
+      }
+      
+      .left-panel {
+        padding: 1rem;
+      }
+      
+      h1 {
+        font-size: 1.5rem;
+      }
+      
+      h2 {
+        font-size: 1.2rem;
       }
     }
   </style>
@@ -540,10 +565,11 @@
       <div class="intro-section">
         <img src="me.jpeg" alt="Evan Kuvshinoff" class="profile-photo">
         <div class="mission-statement">
-          <h2>Mission Statement</h2>
-          <p>I'm passionate about creating intelligent systems with real impact on the world. My work focuses on developing intuitive, responsive solutions that enhance daily life through thoughtful and responsible integration of AI, IoT, and interactive design.</p>
+          <h2>Career Objective</h2>
+          <p> To engineer intelligent, embedded systems that enhance user experience, performance, and accessibility; drawing on a strong interest in low-level programming, edge computing, and responsive UX to solve real-world challenges.
+</p>
           
-          <p>I'm eager to apply problem-solving skills, hands-on experience with microcontrollers, and a collaborative mindset to meaningful projects that make the world a better place.</p>
+          
         </div>
       </div>
       
@@ -693,7 +719,6 @@
           <div class="project-details">
             <div class="project-details-content">
               <div class="project-text">
-              <h2>Friend Signals IoT Communication System</h2> 
                 <h3>IoT Communication Network - <a href="https://github.com/ewkuvsh/friend_signals">GitHub Repo</a></h3> 
                 <p>I developed a distributed IoT alert system that enables remote activation of physical alarm devices through Discord commands. The system consists of three main components: a Python program running on a cloud server that manages connected devices, MicroPython-based client firmware for Raspberry Pi Pico microcontrollers, and a Discord bot interface that allows users to trigger alerts remotely.
 </p>
@@ -779,29 +804,44 @@
             </div>
           </div>
         </div>
+<div class="project" onclick="toggleProject(this)">
+          <div class="project-header">
+            <div class="project-preview">
+              <h2>Explainable AI</h2> 
+              <ul>
+                <li>Modular XAI framework for cognitive-motor research</li>
+                <li>Agile development in 6-person research team</li>
+                <li>Configurable interface for experimental parameterization</li>
+              </ul>
+            </div>
+            <img src="xai.png" alt="XAI screen" class="project-thumbnail">
+            <span class="expand-icon">▼</span>
+          </div>
+          <div class="project-details">
+            <div class="project-details-content">
+              <div class="project-text">
+                <h3>XAI Research Project - <a href="https://expo.umd.edu/projects/spring-2025/project-xai">More Information</a></h3> 
+                <p>I contributed to a capstone research project at the University of Maryland's Neuromotor Control and Learning Lab, developing explainable AI integration tools for human-robot teaming studies. This software forms a critical component of experimental infrastructure being used in forthcoming NMCL research intended for peer-reviewed publication. The project focused on creating flexible, research-grade tools that enable cognitive-motor studies exploring how humans interact with and understand AI decision-making in collaborative robotic environments.
+</p>
+                                
+                <p>Working in a 6-person team using Agile methodologies, I designed and implemented a modular explanation generation framework that allows researchers to configure XAI parameters for use in experimental research. The system features a configurable interface supporting variable timing and delivery modes for explanations, enabling precise control over when and how AI reasoning is communicated to human subjects. I also refactored the experiment loading logic, significantly expanding the platform's capacity to accommodate new experimental designs in cognitive-motor studies. The architecture emphasizes modularity and extensibility, allowing the lab to easily expand the scope of their research. 
 
+</p>
+                
+                
+                <p>This project demonstrates expertise in research software development, human-computer interaction design, and collaborative development practices. The modular framework design showcases my ability to create flexible, user-friendly tools for non-technical researchers while maintaining robust software architecture. The work highlights proficiency in Agile development methodologies, experimental software design, and contributing to academic research infrastructure that will impact the broader scientific community's understanding of human-AI collaboration. </p>
+              </div>
+              <div class="project-media">
+                <img src="xai.png" alt="XAI screenshot">
+              </div>
+            </div>
+          </div>
+        </div>
 
       </div>
     </div>
   </div>
-  <script>
-    function toggleProject(element) {
-      element.classList.toggle('expanded');
-      
-      // Adjust left panel width based on any project being expanded
-      const leftPanel = document.querySelector('.left-panel');
-      const rightPanel = document.querySelector('.right-panel');
-      const anyExpanded = document.querySelector('.project.expanded');
-      
-      if (anyExpanded) {
-        leftPanel.classList.add('collapsed');
-        rightPanel.classList.add('expanded');
-      } else {
-        leftPanel.classList.remove('collapsed');
-        rightPanel.classList.remove('expanded');
-      }
-    }
-  </script>
+    <script src="script.js"></script>
 
   </body>
 </html>
