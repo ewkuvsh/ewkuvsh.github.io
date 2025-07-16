@@ -687,11 +687,7 @@
             <div class="project-details-content">
               <div class="project-text">
                 <h3>Clarity Robot - <a href="https://github.com/ewkuvsh/clarity">GitHub Repo</a></h3>
-                <p>Clarity is a sophisticated autonomous robot system, featuring a quadruped design with an OLED display and advanced AI capabilities. The robot combines computer vision, natural language processing, and real-time communication to create an interactive companion that can track faces, respond to voice commands, and display emotions through its screen interface. The system architecture utilizes a hybrid onboard/distributed processing approach, connecting to a powerful core server for video and speech processing when available, then seamlessly falling back to onboard processing when connection to the core server is unavailable.  
-</p>
-                <p>The robot's personality is driven by OpenAI API integration, allowing for natural conversation. Clarity processes speech input, can perform web searches for real-time information, and responds with synthesized speech while displaying appropriate facial expressions. The face tracking system uses MTCNN neural networks for real-time detection, enabling the robot to maintain eye contact during conversations. Technical highlights include custom servo control for head movement, I2C-based OLED display management, multi-process architecture for concurrent audio/visual processing, and robust network communication protocols for seamless integration between the robot hardware and the core server.
-</p>
-                <p>Beyond its technical capabilities, Clarity's system prompt adds multiple fun quirks and easter eggs, adding an element of unpredictability to interactions. The project demonstrates proficiency in embedded systems programming, computer vision, natural language processing, robotics control, and distributed system design, showcasing the integration of multiple complex technologies into a cohesive and engaging robotic platform.</p>
+                <p>Clarity is a sophisticated robot that combines artificial intelligence, computer vision, and servo-controlled movement to create an interactive companion with personality. Built on a distributed architecture using Raspberry Pi and custom hardware, Clarity can engage in natural conversations through voice commands while displaying emotions on an integrated OLED screen. The robot features real-time face detection and tracking using both cloud and edge computing, allowing it to follow and interact with users naturally. The system demonstrates advanced engineering through its multi-process architecture, where separate components handle voice processing, visual recognition, and motor control, all communicating through custom socket protocols. Clarity integrates OpenAI's GPT-4 for conversational AI, Vosk for speech recognition, and OpenCV for computer vision, creating a seamless human-robot interaction experience. The project showcases expertise in distributed systems, real-time audio and video processing, hardware integration, and AI implementation, representing a complete robotics solution from low-level servo control to high-level artificial intelligence.</p>
               </div>
               <div class="project-media">
                 <img src="clarity_img.jpeg" alt="Clarity AI Assistant">
@@ -720,16 +716,9 @@
             <div class="project-details-content">
               <div class="project-text">
                 <h3>IoT Communication Network - <a href="https://github.com/ewkuvsh/friend_signals">GitHub Repo</a></h3> 
-                <p>I developed a distributed IoT alert system that enables remote activation of physical alarm devices through Discord commands. The system consists of three main components: a Python program running on a cloud server that manages connected devices, MicroPython-based client firmware for Raspberry Pi Pico microcontrollers, and a Discord bot interface that allows users to trigger alerts remotely.
-</p>
+                <p>Friend Signals is an innovative IoT system that allows users to remotely trigger alarm devices owned by friends through Discord commands. The system consists of MicroPython-based IoT devices featuring synchronized LED patterns and buzzer alarms, managed by a centralized Python server that handles device registration, connection health monitoring, and command routing. Each device connects to WiFi and maintains persistent TCP connections with the server, implementing custom handshake protocols and heartbeat mechanisms for robust network communication. The server utilizes asynchronous programming with asyncio to handle multiple concurrent clients while providing seamless integration with Discord's API for user commands. The embedded devices demonstrate sophisticated concurrent programming on resource-constrained microcontrollers, managing real-time hardware control, network communication, and system reliability through watchdog timers. This project highlights expertise in distributed systems architecture, embedded programming, network protocols, and creative integration between modern social platforms and physical hardware, creating an entirely new category of social IoT interaction. </p>
                                 
-                <p>The networking protocol is completely custom and built using sockets. Each client device registers with a unique identifier during its handshake protocol, and the server continuously monitors device health through periodic keep-alive messages, automatically pruning disconnected devices from the active client list.
-</p>
                 
-                <p>The client firmware runs on embedded devices equipped with LEDs, buzzers, and WiFi connectivity. When triggered, devices execute a coordinated audio/visual alert sequence featuring alternating LED patterns and PWM-controlled buzzer tones, creating an effective alert that your friends are interested in speaking to you, at any hour of the night! The firmware includes robust error handling with watchdog timer integration to ensure reliable operation and automatic recovery from network failures or system crashes.
-</p>
-                
-                <p>This project demonstrates proficiency in network programming, embedded systems development, asynchronous programming patterns, and IoT device management. The architecture emphasizes reliability and scalability, with proper connection management, error handling, and real-time device monitoring capabilities that make it suitable for production deployment in environments requiring reliable remote notification systems. It is my most technically sound (and gloriously annoying) project. </p>
               </div>
               <div class="project-media">
                 <img src="friendsignal_img.jpeg" alt="Friend Signals Device">
@@ -755,20 +744,13 @@
             <div class="project-details-content">
               <div class="project-text">
                 <h3>Smart Plant Monitoring System</h3>
-                <p>I developed a Bluetooth-enabled smart plant monitoring system that provides real-time soil moisture readings through both a local OLED display and wireless connectivity. 
+                <p>The Smart Plant Monitor represents a complete IoT product development cycle, from custom PCB design to production-ready firmware implementation. Built around an Arduino Nano ESP32, the device provides real-time soil moisture monitoring through calibrated analog sensors, displaying rich visual feedback on an integrated OLED screen with custom graphics including progress bars and animated water drop indicators. The system implements Bluetooth Low Energy (BLE) connectivity for wireless data transmission, enabling remote monitoring capabilities while maintaining power efficiency for battery operation. The project showcases professional hardware development practices through custom PCB design using KiCad, proper component selection, and signal conditioning for accurate sensor readings. The firmware demonstrates embedded systems expertise with real-time sensor processing, mathematical calibration algorithms, and efficient graphics rendering using the U8g2 library. Advanced features include multi-level moisture status indication, environmental compensation, and optimized power management for extended operation. This project exemplifies the complete IoT development process, combining electrical engineering, embedded programming, wireless protocols, and user experience design to create a market-ready smart home device that bridges the gap between hobbyist projects and commercial IoT products.
+                  </p>
+                  <p>
+Subsequent versions of the Plant Monitor include a HTS221 temperature/humidity sensor and provide the same functionality as the Telemetry Station over Bluetooth on top of the existing Plant Monitor features. A third generation is in development which is designed to be a commercial product which will have a custom enclosure and a redesigned PCB. It retains feature parity with the first generation while dramatically reducing cost and maximizing ease of use. 
 </p>
                 
-                <p>The system is built around an Arduino Nano ESP32, equipped with a capacitive soil moisture sensor and a 128x64 pixel OLED display. The moisture sensor uses analog-to-digital conversion to measure soil conductivity, which is then calibrated and mapped to percentage values between completely dry and fully saturated conditions. The firmware implements custom calibration constants.
-</p>
-                
-                <p>The user interface features an OLED display that presents multiple data visualizations simultaneously. The screen shows raw sensor values, percentage-based moisture levels for easy interpretation, descriptive status text ranging from "Very Dry" to "Very Wet," and a dynamic progress bar that provides immediate visual feedback. In addition to visual output, the device acts as a Bluetooth peripheral, allowing the Clarity robot to interface with it and poll the sensor data on request.
-</p>
 
-                <p> The second generation of the plant monitor is built on a custom designed PCB instead of perfboard and adds the same HTS221 sensor from the telemetry station project. The monitor now wirelessly provides moisture level, temperature, and humidity over bluetooth. A third generation 
-                of the monitor is under development, which provides feature parity at a significantly reduced cost, simpler manual calibration with physical buttons, and a complete enclosure for the hardware. This version will be a commercial product.   
-                </p>
-                
-                <p>This project demonstrates expertise in embedded C++ programming, sensor interfacing, display graphics programming, Bluetooth Low Energy protocols, and IoT device development. </p>
               </div>
               <div class="project-media">
                 <img src="plant_far.jpeg" alt="Smart Plant Pot">
